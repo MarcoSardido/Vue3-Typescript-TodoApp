@@ -9,6 +9,14 @@ const todos = ref<TodoType[]>([
   { id: uuid(), title: 'sample', isDone: false }
 ])
 
+const AddTodo = (formData: string) => {
+  todos.value.push({
+    id: uuid(),
+    title: formData,
+    isDone: false
+  })
+}
+
 const updateTodoStatus = (id: string, type: TodoStatus) => {
   const currentTodo = todos.value.find(todo => todo.id === id)
   if (currentTodo) {
@@ -27,7 +35,7 @@ const deleteTodo = (id: string) => {
     <div class="todo">
       <h2>Vue3 + Typescript</h2>
       <div class="form-container">
-        <TodoForm />
+        <TodoForm @handleAddTodo="AddTodo"/>
       </div>
       <div class="todo-container">
         <div class="empty-label" v-if="todos.length === 0">

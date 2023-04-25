@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const txtTodo = ref('')
+const txtTodo = ref<string | null>('')
+const emit = defineEmits(['handleAddTodo'])
+
 const handleTodoForm = () => {
-    console.log(txtTodo.value)
+    emit('handleAddTodo', txtTodo.value)
+    txtTodo.value = null
 }
 </script>
 <template>
