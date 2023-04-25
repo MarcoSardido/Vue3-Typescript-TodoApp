@@ -35,16 +35,40 @@ const deleteTodo = (id: string) => {
     <div class="todo">
       <h2>Vue3 + Typescript</h2>
       <div class="form-container">
-        <TodoForm @handleAddTodo="AddTodo"/>
+        <TodoForm @handleAddTodo="AddTodo" />
       </div>
       <div class="todo-container">
         <div class="empty-label" v-if="todos.length === 0">
           No todos available
         </div>
-        <Todo v-else v-for="todo in todos" :key="todo.id" :todoData="todo"
-          :updateTodoStatus="updateTodoStatus" :deleteTodo="deleteTodo" />
+        <Todo v-else v-for="todo in todos" :key="todo.id" :todoData="todo" :updateTodoStatus="updateTodoStatus"
+          :deleteTodo="deleteTodo" />
       </div>
     </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.todo {
+  width: 30rem;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 5px 0px;
+}
+
+.todo-container {
+  height: 350px;
+  max-height: 350px;
+  overflow-y: auto;
+  margin: 10px 0;
+}
+</style>
